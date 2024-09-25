@@ -8,6 +8,16 @@ export default createGlobalStyle`
       list-style: none;
     }
 
+    /* SCROLL BAR */
+    ::-webkit-scrollbar {
+        width: 8px;
+        
+    }
+    ::-webkit-scrollbar-thumb {
+        background: ${ ({ theme }) => theme.COLORS.PINK};
+        border-radius: 8px;
+    }
+
     body{
       background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
       color: ${({ theme }) => theme.COLORS.WHITE};

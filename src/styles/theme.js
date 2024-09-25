@@ -7,7 +7,9 @@ export default {
 
         WHITE: "#FFFFFF",
         PINK: "#FF859B",
+        LIGHT_PINK: "rgba(255, 133, 155, 0.05)",
 
+        GRAY_50: "F4EDE8",
         GRAY_100: "#E5E5E5",
         GRAY_200: "#948F99",
         GRAY_300: "#999591",

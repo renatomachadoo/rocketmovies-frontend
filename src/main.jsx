@@ -8,10 +8,8 @@ import { Home } from './pages/Home'
 import theme from "./styles/theme"
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Home/>
     </ThemeProvider>
-  </StrictMode>,
 )
