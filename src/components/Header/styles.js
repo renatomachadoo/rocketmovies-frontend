@@ -21,11 +21,36 @@ export const Container = styled.div`
         justify-content: space-between;
         gap: 64px;
 
-        h2 {
+        > h2 {
             color: ${ ({ theme }) => theme.COLORS.PINK};
 
             font-size: 24px;
             font-weight: 700;
+        }
+
+        > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            > div {
+                display: flex;
+                flex-direction: column;
+                text-align: end;
+
+                margin-right: 9px;
+
+                > p{
+                    color: ${ ({ theme }) => theme.COLORS.WHITE};
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                > span{
+                    color: ${ ({ theme }) => theme.COLORS.GRAY_200};
+                }
+            }
         }
     }
 `

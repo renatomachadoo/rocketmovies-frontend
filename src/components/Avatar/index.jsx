@@ -1,12 +1,8 @@
 import { Container } from "./styles";
 
-export function Avatar(){
+export function Avatar({ size=64 }){
     return(
-        <Container>
-            <div>
-                <p>Renato Machado</p>
-                <span>sair</span>
-            </div>
+        <Container size={size}>
             <img src="https://github.com/renatomachadoo.png" alt="Avatar utilizador" />
         </Container>
     )

@@ -10,7 +10,13 @@ export function Header(){
             <header>
                 <h2>RocketMovies</h2>
                 <Input icon={BiSearch} placeholder="Pesquisar pelo título" />
-                <Avatar/>
+                <div>
+                    <div>
+                        <p>Renato Machado</p>
+                        <span>sair</span>
+                    </div>
+                    <Avatar size={64}/>
+                </div>
             </header>
         </Container>
     )
