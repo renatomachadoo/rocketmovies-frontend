@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Container } from "./styles";
 import { Header } from "../../components/Header";
@@ -11,8 +11,11 @@ import { MovieItem } from "../../components/MovieItem";
 import { IoArrowBack } from "react-icons/io5";
 
 export function New(){
-    const [newTag, setNewTag] = useState("")
     const [tags, setTags] = useState([])
+    const [newTag, setNewTag] = useState("")
+    const [title, setTitle] = useState("")
+    const [note, setNote] = useState(0)
+    const [description, setDescription] = useState("")
 
     function handleAddTag(tagName){
         if(!newTag){
@@ -27,6 +30,14 @@ export function New(){
         setTags(filteredTags)
     }
 
+    useEffect(() => {
+        if(Number(note) > 5 ){
+            setNote(5)
+        }else if(Number(note) < 0){
+            setNote(0)
+        }
+    }, [note])
+
     return(
         <Container>
             <Header />
@@ -37,10 +48,23 @@ export function New(){
                 <h2>Novo filme</h2>
                 <form>
                     <div className="cols-2">
-                        <Input placeholder="Título" />
-                        <Input placeholder="Sua nota de (0 a 5)" />
+                        <Input 
+                            placeholder="Título" 
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                        />
+                        <Input 
+                            placeholder="Sua nota de (0 a 5)"
+                            value={note}
+                            onChange={(e) => setNote(e.target.value)}
+                        />
                     </div>
-                    <TextArea rows={10} placeholder="Observações" />
+                    <TextArea 
+                        rows={10} 
+                        placeholder="Observações" 
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
                     <section>
                         <p>Marcadores</p>
                         <div id="markers">
@@ -63,8 +87,8 @@ export function New(){
                         </div>
                     </section>
                     <div className="cols-2">
-                        <Button secondary title="Excluir filme" />
-                        <Button title="Salvar alterações" />
+                        <Button type="button" secondary title="Excluir filme" />
+                        <Button type="button" title="Salvar alterações" />
                     </div>
                 </form>
             </main>
