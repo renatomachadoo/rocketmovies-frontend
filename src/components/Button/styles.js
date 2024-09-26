@@ -7,8 +7,8 @@ export const Container = styled.button`
 
     text-align: center;
 
-    background-color: ${ ({ theme }) => theme.COLORS.PINK};
-    color: ${ ({ theme }) => theme.COLORS.BACKGROUND_900};
+    background-color: ${ ({ theme, secondary }) => secondary ? theme.COLORS.BACKGROUND_950 : theme.COLORS.PINK };
+    color: ${ ({ theme, secondary }) => secondary ? theme.COLORS.PINK : theme.COLORS.BACKGROUND_900};
 
     border: none;
     border-radius: 8px;
