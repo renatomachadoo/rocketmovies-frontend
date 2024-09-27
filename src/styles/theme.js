@@ -7,6 +7,7 @@ export default {
 
         WHITE: "#FFFFFF",
         PINK: "#FF859B",
+        BLACK : "#000000",
         LIGHT_PINK: "rgba(255, 133, 155, 0.05)",
 
         GRAY_50: "F4EDE8",
