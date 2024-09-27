@@ -32,8 +32,8 @@ export function Profile(){
                         <Input icon={FiMail} placeholder="Endereço de E-mail"/>
                     </div>
                     <div>
-                        <Input icon={FiLock} placeholder="Palavra-passe atual"/>
-                        <Input icon={FiLock} placeholder="Nova palavra-passe"/>
+                        <Input icon={FiLock} type="password" placeholder="Palavra-passe atual"/>
+                        <Input icon={FiLock} type="password" placeholder="Nova palavra-passe"/>
                     </div>
                     <Button title="Salvar" />
                 </div>
