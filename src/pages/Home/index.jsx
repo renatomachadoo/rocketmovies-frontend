@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom"
+
 import { Container } from "./styles"
 import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
@@ -6,6 +8,12 @@ import { Movie } from "../../components/Movie"
 import { BiPlus } from "react-icons/bi"
 
 export function Home(){
+    const navigate = useNavigate()
+
+    function handleNavigate(link){
+        navigate(link)
+    }
+
     return (
         <Container>
             <Header/>
@@ -14,7 +22,7 @@ export function Home(){
                     <h1>
                         Meus Filmes
                     </h1>
-                    <Button icon={BiPlus} title="Adicionar filme" />
+                    <Button icon={BiPlus} title="Adicionar filme" onClick={() => handleNavigate("/new")} />
                 </div>
                 <div id="movies">
                     <Movie data={{

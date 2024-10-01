@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { Container } from "./styles";
@@ -16,6 +17,12 @@ export function New(){
     const [title, setTitle] = useState("")
     const [note, setNote] = useState(0)
     const [description, setDescription] = useState("")
+
+    const navigate = useNavigate()
+
+    function handleBack(){
+        navigate(-1)
+    }
 
     function handleAddTag(tagName){
         if(!newTag){
@@ -43,7 +50,7 @@ export function New(){
             <Header />
             <main>
                 <span>
-                    <ButtonText title="Voltar" icon={IoArrowBack}/>
+                    <ButtonText title="Voltar" icon={IoArrowBack} onClick={handleBack} />
                 </span>
                 <h2>Novo filme</h2>
                 <form>

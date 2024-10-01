@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Container } from "./styles"
 
 import { Header } from "../../components/Header"
@@ -12,11 +13,17 @@ import { CiClock2 } from "react-icons/ci";
 
 
 export function Details(){
+    const navigate = useNavigate()
+
+    function handleBack(){
+        navigate(-1)
+    }
+
     return (
         <Container>
             <Header/>
             <main>
-                <ButtonText title="Voltar" icon={IoArrowBack}/>
+                <ButtonText title="Voltar" icon={IoArrowBack} onClick={handleBack} />
                 <div className="details-header">
                     <h2>Interstellar</h2>
                     <div className="rating">

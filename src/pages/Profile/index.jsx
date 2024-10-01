@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Container } from "./styles";
 
 import { ButtonText } from "../../components/ButtonText";
@@ -9,11 +10,17 @@ import { IoArrowBack } from "react-icons/io5";
 import { FiUser, FiMail, FiLock, FiCamera } from "react-icons/fi";
 
 export function Profile(){
+    const navigate = useNavigate()
+
+    function handleBack(){
+        navigate(-1)
+    }
+
     return (
         <Container>
             <header>
                 <div className="header-div">
-                    <ButtonText icon={IoArrowBack} title="Voltar" />
+                    <ButtonText icon={IoArrowBack} title="Voltar" onClick={() => handleBack()} />
                     <div>
                         <Avatar size={186} />
                         <form>

@@ -21,9 +21,14 @@ export const Container = styled.div`
         justify-content: space-between;
         gap: 64px;
 
-        > h2 {
+        > a {
+            text-decoration: none;
             color: ${ ({ theme }) => theme.COLORS.PINK};
 
+            
+        }
+
+        > h2 {
             font-size: 24px;
             font-weight: 700;
         }
@@ -47,8 +52,14 @@ export const Container = styled.div`
                     white-space: nowrap;
                 }
 
-                > span{
+                > button{
                     color: ${ ({ theme }) => theme.COLORS.GRAY_200};
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                    text-align: end;
+                    width: fit-content;
+                    place-self: end;
                 }
             }
         }
