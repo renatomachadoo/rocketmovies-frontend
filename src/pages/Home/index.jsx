@@ -19,10 +19,6 @@ export function Home(){
         navigate(link)
     }
 
-    function handleMovieClick(movieId){
-        navigate(`/details/${movieId}`)
-    }
-
     useEffect(() => {
         async function getData(){
             const response = await api.get(`/movies_notes?title=${search}`)
