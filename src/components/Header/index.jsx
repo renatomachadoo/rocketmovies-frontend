@@ -12,7 +12,7 @@ import avatarPlaceholder from "../../assets/avatar.png"
 
 import { api } from "../../services/api";
 
-export function Header(){
+export function Header({ search, setSearch }){
     const { signOut, user } = useAuth()
 
     function handleSignOut(){
@@ -31,7 +31,7 @@ export function Header(){
                 <Link to="/">
                     <h2>RocketMovies</h2>
                 </Link>
-                <Input icon={BiSearch} placeholder="Pesquisar pelo título" />
+                <Input icon={BiSearch} placeholder="Pesquisar pelo título" value={search} onChange={(e) => setSearch(e.target.value)} />
                 <div>
                     <div>
                         <p>{user.name}</p>

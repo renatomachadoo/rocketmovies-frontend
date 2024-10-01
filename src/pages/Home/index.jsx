@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 
 import { Container } from "./styles"
 import { Header } from "../../components/Header"
@@ -7,16 +8,32 @@ import { Movie } from "../../components/Movie"
 
 import { BiPlus } from "react-icons/bi"
 
+import { api } from "../../services/api"
+
 export function Home(){
+    const [search, setSearch] = useState("")
+    const [movies, setMovies] = useState([])
     const navigate = useNavigate()
 
     function handleNavigate(link){
         navigate(link)
     }
 
+    function handleMovieClick(movieId){
+        navigate(`/details/${movieId}`)
+    }
+
+    useEffect(() => {
+        async function getData(){
+            const response = await api.get(`/movies_notes?title=${search}`)
+            setMovies(response.data)
+        }
+        getData()
+    }, [search])
+
     return (
         <Container>
-            <Header/>
+            <Header search={search} setSearch={setSearch} />
             <main>
                 <div id="content-header">
                     <h1>
@@ -25,44 +42,13 @@ export function Home(){
                     <Button icon={BiPlus} title="Adicionar filme" onClick={() => handleNavigate("/new")} />
                 </div>
                 <div id="movies">
-                    <Movie data={{
-                        title : "Teste",
-                        description : "djioasoidasmiodmasiodiom djioasoidasmiodmasiodiom djioasoidasmiodmasiodiom djioasoidasmiodmasiodiom djioasoidasmiodmasiodiomdjioasoidasmiodmasiodiomdjioasoidasmiodmasiodiomdjioasoidasmiodmasiodiomdjioasoidasmiodmasiodiom",
-                        rating : 5,
-                        tags : [
-                            "slb",
-                            "scp"
-                        ]
-                    }}/>
-                    <Movie data={{
-                        title : "Teste",
-                        description : "djioasoidasmiodmasiodiom",
-                        rating : 3
-                    }}/>
-                    <Movie data={{
-                        title : "Teste",
-                        description : "djioasoidasmiodmasiodiom"
-                    }}/>
-                    <Movie data={{
-                        title : "Teste",
-                        description : "djioasoidasmiodmasiodiom"
-                    }}/>
-                    <Movie data={{
-                        title : "Teste",
-                        description : "djioasoidasmiodmasiodiom"
-                    }}/>
-                    <Movie data={{
-                        title : "Teste",
-                        description : "djioasoidasmiodmasiodiom"
-                    }}/>
-                    <Movie data={{
-                        title : "Teste",
-                        description : "djioasoidasmiodmasiodiom"
-                    }}/>
-                    <Movie data={{
-                        title : "Teste",
-                        description : "djioasoidasmiodmasiodiom"
-                    }}/>
+                    {
+                        movies.map(( movie, index) => (
+                            <Link key={String(index)} to={`/details/${movie.id}`}>
+                                <Movie data={movie}/>
+                            </Link>
+                        ))
+                    }
                 </div>
             </main>
         </Container>
