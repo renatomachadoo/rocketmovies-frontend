@@ -11,6 +11,8 @@ import { MovieItem } from "../../components/MovieItem";
 
 import { IoArrowBack } from "react-icons/io5";
 
+import { api } from "../../services/api";
+
 export function New(){
     const [tags, setTags] = useState([])
     const [newTag, setNewTag] = useState("")
@@ -44,6 +46,31 @@ export function New(){
             setNote(0)
         }
     }, [note])
+
+    function resetData(){
+        setTitle("")
+        setDescription("")
+        setNote(0)
+        setTags([])
+    }
+
+    async function createMovie(){
+        try {
+            await api.post("/movies_notes", {
+                title,
+                description,
+                rating : note,
+                tags : tags.toString()
+            })
+            alert("Nota do filme criada com sucesso.")
+            resetData()
+        } catch (error) {
+            if(error.response){
+                return alert(error.response.data.message)
+            }
+            alert("Não foi possivel criar a nota do filme.")
+        }
+    }
 
     return(
         <Container>
@@ -94,8 +121,8 @@ export function New(){
                         </div>
                     </section>
                     <div className="cols-2">
-                        <Button type="button" secondary title="Excluir filme" />
-                        <Button type="button" title="Salvar alterações" />
+                        <Button type="button" secondary title="Excluir filme" onClick={resetData} />
+                        <Button type="button" title="Salvar alterações" onClick={createMovie} />
                     </div>
                 </form>
             </main>
